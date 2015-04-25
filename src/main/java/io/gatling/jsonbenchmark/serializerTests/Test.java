@@ -23,6 +23,7 @@ public class Test {
     private static final BoonJavaSerializerImpl boonSerializer = new BoonJavaSerializerImpl ();
     private static final GroovySerializerImpl groovySer = new GroovySerializerImpl();
     private static final JacksonSerializerImpl jacksonSer = new JacksonSerializerImpl();
+    private static final GensonSerializerImpl gensonSer = new GensonSerializerImpl();
     private static final GsonSerializerImpl gsonSer = new GsonSerializerImpl();
     private static final GroovyJavaSerializerImpl groovyJavaSer = new GroovyJavaSerializerImpl();
     private static final GroovyJavaWithoutRecursionSerializerImpl groovyJavaSer2 = new GroovyJavaWithoutRecursionSerializerImpl();
@@ -48,6 +49,9 @@ public class Test {
     public void simpleTestJackson() {
         simpleTest(jacksonSer);
     }
+
+    @GenerateMicroBenchmark
+    public void simpleTestGenson() { simpleTest(gensonSer); }
 
     @GenerateMicroBenchmark
     public void simpleTestGson() {
@@ -80,6 +84,9 @@ public class Test {
     }
 
     @GenerateMicroBenchmark
+    public void mediumTestGenson() { mediumTest(gensonSer); }
+
+    @GenerateMicroBenchmark
     public void mediumTestGson() {
         mediumTest(gsonSer);
     }
@@ -109,6 +116,8 @@ public class Test {
         complexTest ( boonSerializer );
     }
 
+    @GenerateMicroBenchmark
+    public void complexTestGenson() { complexTest(gensonSer); }
 
     @GenerateMicroBenchmark
     public void complexTestGson() {
